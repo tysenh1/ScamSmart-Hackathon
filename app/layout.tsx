@@ -3,7 +3,6 @@ import "./globals.css";
 import Header from "./Header";
 import Nav from "./Nav";
 
-
 export const metadata: Metadata = {
   title: "Scam Smart",
   description: "Made by Devs & Dragons",
