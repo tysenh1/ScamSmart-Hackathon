@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 
 interface question {
+  id: number;
   question: string;
   correct: boolean;
 }
@@ -14,29 +15,41 @@ const emailBody = 'I hope this message finds you swimming in a sea of marshmallo
 
 const questions: question[] = [
   {
+    id: 1,
     question: 'subject',
     correct: true,
   },
   {
+    id: 2,
     question: 'sender',
     correct: true,
   },
   {
+    id: 3,
     question: 'body',
     correct: true,
   },
   {
+    id: 4,
     question: 'hyperlinks',
     correct: false,
   }
 ]
 
 
-const [multiSelect, setMultiSelect] = useState('empty');
+  const [multiSelect, setMultiSelect] = useState([]);
 
-function handleClick() {
-  setMultiSelect();
-}
+  function handleClick(id: number) {
+
+  // @ts-ignore
+   const index = multiSelect.findIndex((i) => i.id === id)
+
+   if(index === -1) {
+    setMultiSelect()
+   } else {
+
+   }
+  }
 
   return (
     <>
@@ -53,7 +66,12 @@ function handleClick() {
             <>
               <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
                 {q.question}
-                <button onClick={() => handleClick()} className='w-5 h-5 border border-3 border-black' />
+                <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
+
+                  {multiSelect ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
+
+                </button>
+
               </button>
             </>
           )
