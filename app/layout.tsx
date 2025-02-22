@@ -5,6 +5,7 @@ import Header from "./Header";
 import Nav from "./Nav";
 import {useState} from "react";
 import { StateProvider } from "@/app/StateContext";
+import {readJsonFromLocalStorage, writeJsonToLocalStorage} from "@/app/jsonFunctions";
 
 // export const metadata: Metadata = {
 //   title: "Scam Smart",
@@ -16,6 +17,27 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  if (!readJsonFromLocalStorage("userData")) {
+      const userData = {
+          "recentModule": 1,
+          "games": {
+              "gamesPlayed": 0,
+              "gamesWon":  0,
+              "correctRatio": 0
+          },
+          "isDailyComplete": false,
+          "currentModuleProgress": 0,
+          "moduleCompletion": {
+              "0": 0,
+              "1": 0,
+              "2": 0,
+              "3": 0
+          },
+          "currentStreak": 14
+      }
+      writeJsonToLocalStorage("userData", userData);
+  }
 
   const [activePage, setActivePage] = useState('');
 

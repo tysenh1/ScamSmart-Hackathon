@@ -44,8 +44,8 @@ export default function page() {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    // 'Access-Control-Allow-Origin': '*',
-                    // 'Access-Control-Allow-Method': 'POST',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Method': 'POST',
                 },
                 body: JSON.stringify({ message: input })
             });

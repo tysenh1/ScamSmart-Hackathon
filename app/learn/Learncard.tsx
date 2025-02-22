@@ -5,7 +5,7 @@ import badge from "../../public//learnImages/learnBadge.png"
 import Link from 'next/link'
 import { cards } from './page'
 import { useState } from 'react'
-import { readJsonFile, writeJsonFile } from "@/app/jsonFunctions";
+import { writeJsonToLocalStorage, readJsonFromLocalStorage } from "@/app/jsonFunctions";
 
 const Learncard = (props: any) => {
 
@@ -14,11 +14,11 @@ const Learncard = (props: any) => {
   }
 
   function updateJson(id: string) {
-    const userData = readJsonFile();
+    const userData = readJsonFromLocalStorage("userData");
 
     userData.recentModule = id;
 
-    writeJsonFile(userData)
+    writeJsonToLocalStorage("userData", userData);
   }
   
   return (
