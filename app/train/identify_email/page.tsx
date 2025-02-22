@@ -13,6 +13,7 @@ const page = () => {
   const emailSubject = 'VERY IMPORTANT';
   const emailBody = 'I hope this message finds you swimming in a sea of marshmallow clouds. As the toaster sings its lullaby, I wanted to share my thoughts on the importance of spaghetti in the realm of intergalactic diplomacy. \n\n Did you know that jellybeans can predict the weather? Last Tuesday, I witnessed a squirrel reciting Shakespeare while wearing a top hat made of cheese. It was a moment that truly encapsulated the essence of time travel.\n\nAs we approach the annual celebration of invisible unicorns, please remember to wear your polka-dotted socks. They are essential for the success of our upcoming meeting with the rubber duck committee.\n\nLooking forward to your thoughts on the matter of flying bicycles and their impact on the color of Tuesday.\n\n Best wishes from the land of upside-down rainbows,'
 
+
   const questions: question[] = [
     {
       id: 1,
@@ -35,6 +36,7 @@ const page = () => {
       correct: false,
     }
   ]
+
 
 
   const [multiSelect, setMultiSelect] = useState([false, false, false, false]);
@@ -80,7 +82,9 @@ const page = () => {
             )
           })}
         </div>
+
       </>
+
   )
 }
 
