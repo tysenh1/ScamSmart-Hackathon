@@ -21,7 +21,7 @@ const Nav = () => {
             </Link>
 
             <Link href="/">
-                <button className={(activePage == 'dashboard') ? 'bg-brand-500 w-full h-full' : 'bg-white w-full h-full'}><Image src={(activePage == 'dashboard') ? "/navPictures/dashboard_active.png" : "/navPictures/dashboard.png"} className={"m-auto"} width={40} height={40} alt={""}></Image></button>
+                <button className={(activePage == 'dashboard') ? 'bg-brand-500 w-full h-full' : 'bg-white w-full h-full'}><Image src={(activePage == 'dashboard') ? "/navPictures/dashboard_active.png" : "/navPictures/dashboard.png"} className={"m-auto"} width={25} height={25} alt={""}></Image></button>
             </Link>
 
             <Link href="/confirm">

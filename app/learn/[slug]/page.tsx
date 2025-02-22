@@ -1,6 +1,7 @@
+'use client'
 import React, { useEffect } from 'react'
 import { cards } from '../page';
-import { useStateContext } from '../StateContext';
+import { useStateContext } from '../../StateContext';
 
 const page = ({params}: any) => {
 

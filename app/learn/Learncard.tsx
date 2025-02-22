@@ -11,7 +11,7 @@ const Learncard = (props: any) => {
   function getWidth(width: number) {
     return width;
   }
-
+  
   return (
     <Link href={`/learn/${((props.title).toLowerCase())}`} onClick={() => props.setLastLearn(cards[props.id - 1])} className='w-[350px] h-28 rounded-xl overflow-clip'>
         {props.badgeStatus 
