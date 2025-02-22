@@ -1,8 +1,8 @@
 import React from 'react'
 
-const page = () => {
+const page = (params:any) => {
   return (
-    <div>page</div>
+    <div>hellosdfasd</div>
   )
 }
 
