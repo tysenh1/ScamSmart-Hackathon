@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 interface StreakCard {
   streakCount: number,
@@ -16,7 +17,7 @@ const StreakCardDisplay = () => {
   const [streakCount] = useState(14);
   
   return (
-    <div className="flex items-center justify-center bg-white h-1/4 w-1/2 p-10 rounded-md">
+    <div className="flex items-center justify-center bg-white h-1/4 w-1/0.75 p-10 rounded-xl">
       <span className="text-3xl font-bold">Your Streak: </span>
       <img
        src="/dashboardImages/streakFireImage.svg"
@@ -33,15 +34,19 @@ const WeakSpotsCardDisplay = () => {
   const [cardDescription] = useState("Find your weak spots.");
 
   return (
-    <div className="flex items-center justify-center bg-white w-1/3 h-1/0.75 py-4 px-10 my-6 p-5 rounded-md">
-      <span className="text-3xl font-bold">{cardDescription}</span>
+    <div className="flex items-center justify-center bg-white w-1/2 h-1/0.75 py-4 px-10 my-6 p-5 rounded-xl">
+      <Link href="/learn">
+        <span className="text-3xl font-bold">
+          {cardDescription}
+        </span>
+      </Link>
     </div>
   );
 };
 
 const page = () => {
   return (
-    <div className="bg-green-500 h-full">
+    <div className="bg-gray-300 h-full flex flex-col justify-center items-center">
       This is the dashboard
     <StreakCardDisplay />
     <WeakSpotsCardDisplay />
