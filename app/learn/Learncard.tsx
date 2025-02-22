@@ -26,7 +26,7 @@ const Learncard = (props: any) => {
           <div style={{width: getWidth(props.progressBar) + "%"}} className={`h-3 w-[${getWidth(props.progressBar)}%] bg-red-500`}></div>
         </div>
         <div className='w-[350px] h-28 absolute p-2'>
-          <h1 className='font-bold text-white text-2xl drop-shadow-lg'>{props.title}</h1>
+          <h1 className='font-bold text-white text-2xl drop-shadow-good'>{props.title}</h1>
         </div>
         <Image className='w-[350px] h-full' key={props.id} src={props.imagePath} alt='subway logo' />
     </Link>

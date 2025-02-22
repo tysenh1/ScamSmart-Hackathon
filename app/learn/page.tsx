@@ -73,8 +73,8 @@ export default function page() {
                             <CircleProgress percentage={lastLearn.progressBar} circleWidth={150} />
                         </div>
                         <Image src={lastLearn.imagePath} className="w-[350px] h-48 absolute object-cover rounded-xl" alt="asdfs" />
-                        <div className="w-[350px] h-48 absolute p-3 text-white font-bold text-3xl rounded-xl drop-shadow-md outline-4 outline-gray-700">
-                            Continue Module
+                        <div className="w-[350px] h-48 absolute p-3 text-white font-bold text-3xl rounded-xl drop-shadow-md outline-4 outline-gray-700 drop-shadow-good">
+                            Continue Module 
                         </div>
                     </div>
                     {cards.map((c) => {

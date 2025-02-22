@@ -29,7 +29,7 @@ export const cards: trainCard[] = [
     },
     {
         id: 2,
-        title: "Find the Problem",
+        title: "Spot",
         scamType: 'Housing',
         imagePath: housingScamImage,
     },
@@ -78,7 +78,7 @@ export default function page() {
                     })}
                     <div className="w-[350px] h-28 rounded-xl">
                         <div className='w-[350px] h-28 absolute p-3 flex justify-center items-center'>
-                            <h1 className='font-bold text-white text-3xl drop-shadow-lg'>COMING SOON</h1>
+                            <h1 className='font-bold text-white text-3xl drop-shadow-lg drop-shadow-good'>COMING SOON</h1>
                         </div>
                         <Image className='w-[350px] h-28 mb-[-112px]' src={underConTape1} alt='subway logo' />
                         <Image className='w-[350px] h-28' src={underConGlass} alt='subway logo' />

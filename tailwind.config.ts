@@ -6,7 +6,7 @@ export default {
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-      flowbite.content()
+    flowbite.content()
   ],
   theme: {
     extend: {
@@ -26,6 +26,6 @@ export default {
     },
   },
   plugins: [
-      flowbite.plugin()
+    flowbite.plugin()
   ],
 } satisfies Config;

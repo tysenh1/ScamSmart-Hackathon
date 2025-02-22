@@ -9,3 +9,7 @@ nextjs-portal {
 .circle-stroke {
     stroke-linecap: round;
 }
+
+.drop-shadow-good {
+    text-shadow: 0 3px 8px rgba(0, 0, 0, 0.884);
+}

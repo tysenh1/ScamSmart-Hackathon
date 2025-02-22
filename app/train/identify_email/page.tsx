@@ -1,8 +1,8 @@
 import React from 'react'
 
-const page = (params:any) => {
+const page = () => {
   return (
-    <div>hellosdfasd</div>
+    <div>identify email page</div>
   )
 }
 
