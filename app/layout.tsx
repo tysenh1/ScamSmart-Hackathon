@@ -15,10 +15,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-dvh">
-      <body className="h-full flex flex-col bg-gradient-to-b from-brand-900 to-brand-500">
+      <body className="h-full flex flex-col gb-gray-50">
           <Header />
           <div className="h-full">
-            <div className={"h-auto overflow-x-scroll pb-20"}>
+            <div className={"h-auto overflow-x-scroll pb-20 bg-gradient-to-b from-brand-900 to-brand-500"}>
               {children}
             </div>
           </div>

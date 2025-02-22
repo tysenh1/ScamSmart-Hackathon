@@ -54,8 +54,8 @@ export default function page() {
 
     return (
         <>
-            <div className="w-screen h-full mt-8">
-                <div className="flex flex-col gap-5 items-center">
+            <div className="w-screen h-full mt-8 ">
+                <div className="flex flex-col gap-5 items-center ">
                     <div className="w-[350px] h-48 bg-pink-200 rounded-xl ">
                         <Image src={lastLearn.imagePath} className="w-[350px] h-48 absolute object-cover rounded-xl" alt="asdfs" />
                         <div className="w-[350px] h-48 bg-pink-500 rounded-xl">
