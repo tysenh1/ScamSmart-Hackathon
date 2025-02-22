@@ -1,4 +1,5 @@
-import type { Metadata } from "next";import "./globals.css";
+import type { Metadata } from "next";
+import "./globals.css";
 import Header from "./Header";
 import Nav from "./Nav";
 
@@ -13,11 +14,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-screen">
-        <body className="h-full grid grid-row-15">
+    <html lang="en" className="h-dvh">
+      <body className="h-full flex flex-col">
           <Header />
-          <div className="row-span-12">
-            {children}
+          <div className="h-full">
+            <div className={"h-auto overflow-x-scroll pb-20"}>
+              {children}
+            </div>
           </div>
           <Nav />
         </body>
