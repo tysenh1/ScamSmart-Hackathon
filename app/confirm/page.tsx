@@ -7,30 +7,41 @@ import { useStateContext } from '../StateContext';
 export default function page() {
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const { activePage, setActivePage } = useStateContext();
+    const { setActivePage } = useStateContext();
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
         setActivePage("confirm");
     }, [])
 
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [messages, setMessages] = useState<{ role: string, text: string }[]>([]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [input, setInput] = useState('');
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useEffect(() => {
+        console.log(input)
+    }, [input]);
 
 
     const sendMessage = async () => {
         if (!input.trim()) return;
 
+        console.log("KD;GHDS;GIDRS;U")
+
         setMessages([...messages, { role: "user", text: input }]);
 
         try {
-            const response = await fetch("API KEY GOES HERE", {
+            const response = await fetch("https://dev-hack-2025-21az.vercel.app/api/v1/chatbot", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({ message: input })
             });
-
             const data = await response.json();
             setMessages([...messages, { role: "user", text: input }, { role: "bot", text: data.aiResponse }])
+            console.log(response.body)
         } catch (error) {
             console.error("Error fetching chatbot response:", error)
         }
