@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'fs'
 
 export const readJsonFile = () => {
     const data = fs.readFileSync('../userData.json', 'utf-8');

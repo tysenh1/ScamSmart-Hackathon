@@ -5,6 +5,11 @@ import { Button, Textarea, Card } from "flowbite-react";
 import { useStateContext } from '../StateContext';
 
 export default function page() {
+    // function handleClick() {
+    //     console.log("uishg")
+    //     sendMessage()
+    // }
+
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { setActivePage } = useStateContext();
@@ -27,6 +32,7 @@ export default function page() {
 
 
     const sendMessage = async () => {
+        console.log("iuhsf")
         if (!input.trim()) return;
 
         console.log("KD;GHDS;GIDRS;U")
@@ -36,7 +42,11 @@ export default function page() {
         try {
             const response = await fetch("https://dev-hack-2025-21az.vercel.app/api/v1/chatbot", {
                 method: "POST",
-                headers: {"Content-Type": "application/json"},
+                headers: {
+                    "Content-Type": "application/json",
+                    // 'Access-Control-Allow-Origin': '*',
+                    // 'Access-Control-Allow-Method': 'POST',
+                },
                 body: JSON.stringify({ message: input })
             });
             const data = await response.json();
