@@ -190,7 +190,7 @@ const page = () => {
                   return(
                       <>
                         <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
-                          {quizAnswers[(q.id) - 1].text}
+                          <p className='max-w-64'>{quizAnswers[(q.id) - 1].text}</p>
                           <div className='flex flex-row gap-2 justify-center items-center'>
                             {q.correct ?
                                 <Image src={checkMark} className='w-7 h-7' alt='subway'></Image>
@@ -224,9 +224,8 @@ const page = () => {
                   return(
                       <>
                         <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
-                          {quizAnswers[(q.id) - 1].text}
+                          <p className='max-w-64'>{quizAnswers[(q.id) - 1].text}</p>
                           <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
-
                             {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
                           </button>
 
