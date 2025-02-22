@@ -52,7 +52,7 @@ const page = () => {
     <WeakSpotsCardDisplay />
     </div>
   );
-}
+};
 
 
 export default page;
