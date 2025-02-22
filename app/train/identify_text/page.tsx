@@ -141,7 +141,7 @@ const page = () => {
     console.log(data.quizItem)
 
     for (let i=0; i < answers.length; i++) {
-      answers[i]["id"] = i
+      answers[i]["id"] = i + 1
       answers[i]["text"] = data.quizItem["answers"][i]["text"]
       answers[i]["correct"] = data.quizItem["answers"][i]["correct"]
     }

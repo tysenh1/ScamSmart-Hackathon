@@ -72,6 +72,110 @@ const page = () => {
     }
   }
 
+  const [quizAnswers, setQuizAnswers] = useState([
+    {
+      "correct": false,
+      "text": ""
+    },
+    {
+      "correct": false,
+      "text": ""
+    },
+    {
+      "correct": false,
+      "text": ""
+    },
+    {
+      "correct": false,
+      "text": ""
+    }
+  ]);
+  const [quizItem, setQuizItem] = useState({
+    "quizItem": {
+      "answers": [
+        {
+          "id": 1,
+          "correct": false,
+          "text": ""
+        },
+        {
+          "id": 2,
+          "correct": false,
+          "text": ""
+        },
+        {
+          "id": 3,
+          "correct": false,
+          "text": ""
+        },
+        {
+          "id": 4,
+          "correct": false,
+          "text": ""
+        }
+      ],
+      "explanation": "",
+      "message": "",
+      "question": "",
+      "scenario": "",
+      "messageType": ""
+    }
+  })
+
+  const getQuizItem = async () => {
+    const response = await fetch("https://dev-hack-2025-21az.vercel.app/api/v1/games/quiz?format=sms&topic=memberships", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Method': 'POST',
+      },
+    });
+    const data = await response.json();
+    setQuizItem(data.quizItem)
+
+    const answers =  [
+      {
+        "id": 1,
+        "correct": false,
+        "text": ""
+      },
+      {
+        "id": 2,
+        "correct": false,
+        "text": ""
+      },
+      {
+        "id": 3,
+        "correct": false,
+        "text": ""
+      },
+      {
+        "id": 4,
+        "correct": false,
+        "text": ""
+      }
+    ]
+
+    for (let i=0; i < answers.length; i++) {
+      answers[i]["id"] = i + 1
+      answers[i]["text"] = data.quizItem["answers"][i]["text"]
+      answers[i]["correct"] = data.quizItem["answers"][i]["correct"]
+    }
+
+    setQuizAnswers(answers)
+
+
+  }
+
+  useEffect(() => {
+    console.log(quizAnswers)
+  }, [quizAnswers]);
+
+  useEffect(() => {
+    getQuizItem();
+  }, []);
+
   return (
       <>
         {endGame? <Result /> : <></>}
