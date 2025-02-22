@@ -11,6 +11,7 @@ import { StaticImageData } from "next/image";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useStateContext } from '../StateContext';
+import checkMark from '../../public/checkmark.png';
 
 interface trainCard {
     id: number,
@@ -28,7 +29,7 @@ export const cards: trainCard[] = [
     },
     {
         id: 2,
-        title: "Find the Problem",
+        title: "Spot",
         scamType: 'Housing',
         imagePath: housingScamImage,
     },
@@ -50,6 +51,8 @@ export default function page() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { activePage, setActivePage } = useStateContext();
 
+    const dailChallengeFinished = true;
+
     useEffect(() => {
         setActivePage("train");
     }, [])
@@ -57,14 +60,30 @@ export default function page() {
     return (
         <>
             <div className="w-screen h-full mt-8">
-                <div className="flex flex-col gap-5 items-center ">
-                    <Image src={DailyChallengeImage} className="w-[350px] h-48 bg-pink-200 rounded-xl " alt="subway logo">
-                    </Image>
+                <div className="flex flex-col gap-5 items-center">
+                    <div className="w-[350px] h-44">
+                        {dailChallengeFinished ? <div className="w-[350px] h-44 absolute flex justify-end items-end p-4">
+                            <Image src={checkMark} className="w-12 z-40 mr-[-6px]"  alt="subway" />
+                        </div>:<></>}
+                        <div className="w-[350px] h-44 absolute flex justify-end items-end p-4">
+                            <div className="border-4 border-black w-9 h-9"></div>
+                        </div>
+                        <Image src={DailyChallengeImage} className="w-[350px] h-44 bg-pink-200 rounded-xl " alt="subway logo">
+                        </Image>
+                    </div>
                     {cards.map((c) => {
                         return (
                             <TrainCard id={c.id} title={c.title} scamType={c.scamType} imagePath={c.imagePath} />
                         )
                     })}
+                    <div className="w-[350px] h-28 rounded-xl">
+                        <div className='w-[350px] h-28 absolute p-3 flex justify-center items-center'>
+                            <h1 className='font-bold text-white text-3xl drop-shadow-lg drop-shadow-good'>COMING SOON</h1>
+                        </div>
+                        <Image className='w-[350px] h-28 mb-[-112px]' src={underConTape1} alt='subway logo' />
+                        <Image className='w-[350px] h-28' src={underConGlass} alt='subway logo' />
+                        <Image className='w-[350px] h-28 mt-[-109px]' src={underConTape2} alt='subway logo' />
+                    </div>
                 </div>
             </div>
         </>
