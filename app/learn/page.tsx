@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import CircleProgress from "./CircleProgress";
 import { useStateContext } from '../StateContext';
+import {readJsonFromLocalStorage, writeJsonToLocalStorage} from "@/app/jsonFunctions";
 
 interface learnCard {
     id: number,
@@ -60,9 +61,38 @@ export default function page() {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const { activePage, setActivePage } = useStateContext();
 
+    const [ recentModule, setRecentModule ] = useState(1)
+    const [ userData, setUserData ] = useState({
+        "recentModule": 1,
+        "games": {
+            "gamesPlayed": 0,
+            "gamesWon":  0,
+            "correctRatio": 0
+        },
+        "isDailyComplete": false,
+        "currentModuleProgress": 0,
+        "moduleCompletion": {
+            "0": 0,
+            "1": 0,
+            "2": 0,
+            "3": 0
+        },
+        "currentStreak": 14
+    });
+
     useEffect(() => {
         setActivePage("learn");
+        const userData = readJsonFromLocalStorage("userData");
+        setUserData(userData);
+        setRecentModule(userData.recentModule)
     }, [])
+
+    useEffect(() => {
+        console.log("recent Module", recentModule)
+        userData.recentModule = recentModule;
+        writeJsonToLocalStorage("userData", userData)
+    }, [recentModule]);
+
 
     return (
         <>
@@ -72,6 +102,7 @@ export default function page() {
                         <div className="w-[350px] h-48 absolute rounded-xl z-40">
                             <CircleProgress percentage={lastLearn.progressBar} circleWidth={150} />
                         </div>
+                        {/*<Image src={cards[recentModule - 1].imagePath} className="w-[350px] h-48 absolute object-cover rounded-xl" alt="asdfs" />*/}
                         <Image src={lastLearn.imagePath} className="w-[350px] h-48 absolute object-cover rounded-xl" alt="asdfs" />
                         <div className="w-[350px] h-48 absolute p-3 text-white font-bold text-3xl rounded-xl drop-shadow-md outline-4 outline-gray-700">
                             Continue Module
@@ -79,7 +110,7 @@ export default function page() {
                     </div>
                     {cards.map((c) => {
                         return (
-                            <Learncard key={c.id} id={c.id} title={c.title} imagePath={c.imagePath} badgeStatus={c.badgeStatus} progressBar={c.progressBar} setLastLearn={setLastLearn} />
+                            <Learncard key={c.id} id={c.id} title={c.title} imagePath={c.imagePath} badgeStatus={c.badgeStatus} progressBar={c.progressBar} setLastLearn={setLastLearn} lastLearn={lastLearn} recentModule={recentModule} setRecentModule={setRecentModule} />
                         )
                     })}
                 </div>

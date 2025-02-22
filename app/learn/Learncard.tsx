@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import Image from 'next/image'
 import { getImageURL } from '../utils/image-util'
 import badge from "../../public//learnImages/learnBadge.png"
@@ -13,18 +13,20 @@ const Learncard = (props: any) => {
     return width;
   }
 
-  function updateJson(id: string) {
-    const userData = readJsonFromLocalStorage("userData");
 
-    userData.recentModule = id;
+    useEffect(() => {
+        const userData = readJsonFromLocalStorage("userData");
 
-    writeJsonToLocalStorage("userData", userData);
-  }
+        userData.recentModule = props.id;
+
+        writeJsonToLocalStorage("userData", userData);
+
+        props.setRecentModule(props.id);
+    }, [props.lastLearn]);
   
   return (
     <Link href={`/learn/${((props.title).toLowerCase())}`} onClick={() => {
         props.setLastLearn(cards[props.id - 1])
-        updateJson(props.id)
     }} className='w-[350px] h-28 rounded-xl overflow-clip'>
         {props.badgeStatus 
         ?
