@@ -11,6 +11,15 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        brand: {
+          400: '#e1f4f5',
+          500: '#D3E8E9',
+          600: '#c5dadb',
+          700: '#b1c6c7',
+          800: '#7d9091',
+          900: '#96aaab'
+        },
+        greener: '#3CB043'
       },
     },
   },

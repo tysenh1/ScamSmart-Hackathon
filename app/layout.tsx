@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="h-dvh">
-      <body className="h-full flex flex-col">
+      <body className="h-full flex flex-col bg-gradient-to-b from-brand-900 to-brand-500">
           <Header />
           <div className="h-full">
             <div className={"h-auto overflow-x-scroll pb-20"}>
