@@ -1,0 +1,17 @@
+{
+    "recentModule": 1,
+    "games": {
+        "gamesPlayed": 0,
+        "gamesWon":  0,
+        "correctRatio": 0
+    },
+    "isDailyComplete": false,
+    "currentModuleProgress": 0,
+    "moduleCompletion": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0
+    },
+    "currentStreak": 14
+}

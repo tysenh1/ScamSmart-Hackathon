@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className='w-full bg-white drop-shadow-md sticky top-0 h-20 flex z-50 border-b border-gray-200 border-b-3'>
+    <div className='w-full bg-white drop-shadow-md sticky top-0 h-20 flex z-50 border-b border-gray-200 border-b-3 shadow-custom'>
         <div className={"h-20 w-20 grid content-center justify-center"}>
             <Image src={"/navPictures/sprint_logo_cropped_1.png"} alt={""} width={50} height={50}></Image>
         </div>

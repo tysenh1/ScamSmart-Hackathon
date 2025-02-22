@@ -79,7 +79,7 @@ export default function page() {
                     </div>
                     {cards.map((c) => {
                         return (
-                            <Learncard id={c.id} title={c.title} imagePath={c.imagePath} badgeStatus={c.badgeStatus} progressBar={c.progressBar} setLastLearn={setLastLearn} />
+                            <Learncard key={c.id} id={c.id} title={c.title} imagePath={c.imagePath} badgeStatus={c.badgeStatus} progressBar={c.progressBar} setLastLearn={setLastLearn} />
                         )
                     })}
                 </div>
