@@ -1,8 +1,11 @@
 'use client'
 
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { useStateContext } from './StateContext';
+
+interface WelcomeMessageCard {
+  userName: string
+}
 
 interface StreakCard {
   streakCount: number,
@@ -14,30 +17,41 @@ interface WeakSpotsCard {
   cardDescription: string
 }
 
+const DashboardWelcomeMessage = () => {
+  const [userName] = useState("Jerry");
+
+  return (
+    <div className="flex text-center w-3/4 p-10">
+      <span className="text-4xl font-bold text-green-300" >Welcome back, {userName}. </span>
+
+    </div>
+  )
+}
+
 const StreakCardDisplay = () => {
   const [streakCount] = useState(14);
   
   return (
-    <div className="flex items-center justify-center bg-white h-1/4 w-1/0.75 p-10 rounded-xl">
-      <span className="text-3xl font-bold">Your Streak: </span>
+    <div className="flex items-center justify-center bg-gray-300 w-3/4 p-10 rounded-xl shadow-md">
+      <span className="text-3xl font-semibold">Learning Streak: </span>
       <img
        src="/dashboardImages/streakFireImage.svg"
        alt="fireIcon"
-       className="w=9 h-9"
+       className="w-10 h-10"
       />
-      <span className="text-3xl font-bold">{streakCount} days!</span>
+      <span className="text-3xl font-bold text-yellow-500">{streakCount} days!</span>
     </div>
   );
 };
 
 
 const WeakSpotsCardDisplay = () => {
-  const [cardDescription] = useState("Find your weak spots.");
+  const [cardDescription] = useState("Find your weak spots and train.");
 
   return (
-    <div className="flex items-center justify-center bg-white w-1/2 h-1/0.75 py-4 px-10 my-6 p-5 rounded-xl">
+    <div className="flex text-center justify-center bg-gray-300 w-3/4 p-6 rounded-xl shadow-md">
       <Link href="/learn">
-        <span className="text-3xl font-bold">
+        <span className="text-2xl font-semibold">
           {cardDescription}
         </span>
       </Link>
@@ -46,21 +60,15 @@ const WeakSpotsCardDisplay = () => {
 };
 
 const page = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { activePage, setActivePage } = useStateContext();
-
-  useEffect(() => {
-      setActivePage("dashboard");
-  }, [])
-
   return (
-    <div className="bg-gray-300 h-full flex flex-col justify-center items-center">
-      This is the dashboard
+    <div className="bg-white min-h-screen flex flex-col justify-center items-center space-y-6 overflow-hidden">
+    <h1 className="mb-4"></h1>
+    <DashboardWelcomeMessage />
     <StreakCardDisplay />
     <WeakSpotsCardDisplay />
     </div>
   );
-}
+};
 
 
 export default page;
