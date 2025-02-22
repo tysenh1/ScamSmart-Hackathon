@@ -6,9 +6,10 @@ import image2 from '../../public/learnImages/learnRomance.png'
 import image3 from '../../public/learnImages/learnEmployment.png'
 import image4 from '../../public/learnImages/learnSpearfishing.png'
 import { StaticImageData } from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import CircleProgress from "./CircleProgress";
+import { useStateContext } from '../StateContext';
 
 interface learnCard {
     id: number,
@@ -52,6 +53,12 @@ export const cards: learnCard[] = [
 export default function page() {
     
     const [lastLearn, setLastLearn] = useState(cards[0]);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { activePage, setActivePage } = useStateContext();
+
+    useEffect(() => {
+        setActivePage("learn");
+    }, [])
 
     return (
         <>
