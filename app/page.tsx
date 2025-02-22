@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Link from 'next/link';
+import { useStateContext } from './StateContext';
 
 interface StreakCard {
   streakCount: number,
@@ -45,6 +46,13 @@ const WeakSpotsCardDisplay = () => {
 };
 
 const page = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { activePage, setActivePage } = useStateContext();
+
+  useEffect(() => {
+      setActivePage("dashboard");
+  }, [])
+
   return (
     <div className="bg-gray-300 h-full flex flex-col justify-center items-center">
       This is the dashboard

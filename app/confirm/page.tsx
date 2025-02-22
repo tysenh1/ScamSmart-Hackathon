@@ -1,9 +1,17 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Button, Textarea, Card } from "flowbite-react";
+import { useStateContext } from '../StateContext';
 
 export default function page() {
+
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const { activePage, setActivePage } = useStateContext();
+
+    useEffect(() => {
+        setActivePage("confirm");
+    }, [])
 
     const [messages, setMessages] = useState<{ role: string, text: string }[]>([]);
     const [input, setInput] = useState('');
