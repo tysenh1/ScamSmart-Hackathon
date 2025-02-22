@@ -75,43 +75,45 @@ const page = () => {
   return (
       <>
         {endGame? <Result /> : <></>}
-        {midGame ? 
-          <>
-            <div className='flex flex-col gap-3 p-4'>
-                  <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{emailSender}</p></div>
-                  <div className='font-bold flex gap-2 bg-white rounded-md p-2'>Subject: <p className='font-normal'>{emailSubject}</p></div>
-                  <div className='bg-white rounded-md p-2'>
-                    <p className='font-normal'>{emailBody}</p>
-                  </div>
+
+        {midGame ?
+            <>
+              <div className='flex flex-col gap-3 p-4'>
+                <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{emailSender}</p></div>
+                <div className='font-bold flex gap-2 bg-white rounded-md p-2'>Subject: <p className='font-normal'>{emailSubject}</p></div>
+                <div className='bg-white rounded-md p-2'>
+                  <p className='font-normal'>{emailBody}</p>
                 </div>
-                <div className='flex flex-col gap-3 p-4 bg-white rounded-md'>
-                  {questions.map((q) => {
-                    return(
-                        <>
-                          <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
-                            {q.question}
-                            <div className='flex flex-row gap-2 justify-center items-center'>
-                              {q.correct ? 
-                              <Image src={checkMark} className='w-7 h-7' alt='subway'></Image>
-                              : 
-                              <Image src={xMark} className='w-7 h-7' alt='subway'></Image>
-                              }
-                              <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
-          
-                                {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
-                              </button>
-                            </div>
-        
-                          </button>
-                        </>
-                    )
-                  })}
-                  <button onClick={() => handleSubmitClick()} className='bg-brand-600 border-2 border-brand-700 p-3 flex justify-center items-center '>Next</button>
-                </div>
-              </>
-              :
-              <>
-                <div className='flex flex-col gap-3 p-4'>
+              </div>
+              <div className='flex flex-col gap-3 p-4 bg-white rounded-md'>
+                {questions.map((q) => {
+                  return(
+                      <>
+                        <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
+                          {q.question}
+                          <div className='flex flex-row gap-2 justify-center items-center'>
+                            {q.correct ?
+                                <Image src={checkMark} className='w-7 h-7' alt='subway'></Image>
+                                :
+                                <Image src={xMark} className='w-7 h-7' alt='subway'></Image>
+                            }
+                            <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
+
+                              {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
+                            </button>
+                          </div>
+
+                        </button>
+                      </>
+                  )
+                })}
+                <button onClick={() => handleSubmitClick()} className='bg-brand-600 border-2 border-brand-700 p-3 flex justify-center items-center '>Next</button>
+              </div>
+            </>
+            :
+            <>
+              <div className='flex flex-col gap-3 p-4'>
+
                 <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{emailSender}</p></div>
                 <div className='font-bold flex gap-2 bg-white rounded-md p-2'>Subject: <p className='font-normal'>{emailSubject}</p></div>
                 <div className='bg-white rounded-md p-2'>
@@ -125,18 +127,20 @@ const page = () => {
                         <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
                           {q.question}
                           <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
-      
+
                             {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
                           </button>
-      
+
                         </button>
                       </>
                   )
                 })}
                 <button onClick={() => handleSubmitClick()} className='bg-brand-600 border-2 border-brand-700 p-3 flex justify-center items-center '>Submit</button>
               </div>
-              </>
-              }
+
+            </>
+        }
+
 
       </>
 
