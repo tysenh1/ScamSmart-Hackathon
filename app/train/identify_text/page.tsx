@@ -1,5 +1,9 @@
 'use client'
-import React, {use, useEffect, useState} from 'react'
+import React, { useState, useEffect } from 'react'
+import Result from './Result';
+import Image from 'next/image';
+import checkMark from '../../../public/checkmark.png'
+import xMark from '../../../public/xmark.png'
 
 interface question {
   id: number;
@@ -10,16 +14,17 @@ interface question {
 const page = () => {
 
   const textSender = '(780) 782-2847';
-  const textBody = "We're excited to inform you that you're 2% cash reward is now available for redemption. This reward has been calculated based on your purchases since the activation of your Costco Membership. To redeem your reward, visit my12monthsredeem2025.info"
+  const textBody = 'I hope this message finds you swimming in a sea of marshmallow clouds. As the toaster sings its lullaby, I wanted to share my thoughts on the importance of spaghetti in the realm of intergalactic diplomacy. \n\n Did you know that jellybeans can predict the weather? Last Tuesday, I witnessed a squirrel reciting Shakespeare while wearing a top hat made of cheese. It was a moment that truly encapsulated the essence of time travel.\n\nAs we approach the annual celebration of invisible unicorns, please remember to wear your polka-dotted socks. They are essential for the success of our upcoming meeting with the rubber duck committee.\n\nLooking forward to your thoughts on the matter of flying bicycles and their impact on the color of Tuesday.\n\n Best wishes from the land of upside-down rainbows,'
+
 
   const questions: question[] = [
     {
       id: 1,
-      question: 'grammer',
-      correct: false,
+      question: 'subject',
+      correct: true,
     },
     {
-      id: 2.,
+      id: 2,
       question: 'sender',
       correct: true,
     },
@@ -31,12 +36,41 @@ const page = () => {
     {
       id: 4,
       question: 'hyperlinks',
-      correct: true,
+      correct: false,
     }
   ]
 
 
+
   const [multiSelect, setMultiSelect] = useState([false, false, false, false]);
+
+  function handleClick(id: number) {
+
+
+    const selectElements = [...multiSelect];
+
+    // selectElements[id - 1] = !selectElements[id - 1]
+    if (!selectElements[id - 1]) {
+      selectElements[id - 1] = true
+    } else {
+      selectElements[id - 1] = false
+    }
+
+    setMultiSelect(selectElements)
+  }
+
+  const [endGame, setEndGame] = useState(false);
+
+  const [midGame, setMidGame] = useState(false);
+
+  function handleSubmitClick() {
+    if(midGame) {
+      setEndGame(true);
+    } else {
+      setMidGame(true);
+    }
+  }
+
   const [quizAnswers, setQuizAnswers] = useState([
     {
       "correct": false,
@@ -87,22 +121,6 @@ const page = () => {
     }
   })
 
-  function handleClick(id: number) {
-    console.log(id)
-
-
-    const selectElements = [...multiSelect];
-
-    // selectElements[id - 1] = !selectElements[id - 1]
-    if (!selectElements[id - 1]) {
-      selectElements[id - 1] = true
-    } else {
-      selectElements[id - 1] = false
-    }
-
-    setMultiSelect(selectElements)
-  }
-
   const getQuizItem = async () => {
     const response = await fetch("https://dev-hack-2025-21az.vercel.app/api/v1/games/quiz?format=sms&topic=memberships", {
       method: "GET",
@@ -114,6 +132,8 @@ const page = () => {
     });
     const data = await response.json();
     setQuizItem(data.quizItem)
+
+    console.log(data.quizItem)
 
     const answers =  [
       {
@@ -138,8 +158,6 @@ const page = () => {
       }
     ]
 
-    console.log(data.quizItem)
-
     for (let i=0; i < answers.length; i++) {
       answers[i]["id"] = i + 1
       answers[i]["text"] = data.quizItem["answers"][i]["text"]
@@ -152,40 +170,79 @@ const page = () => {
   }
 
   useEffect(() => {
-    getQuizItem()
-
+    getQuizItem();
   }, []);
-
-  // useEffect(() => {
-  //   console.log(multiSelect)
-  // }, [multiSelect]);
 
   return (
       <>
-        <div className='flex flex-col gap-3 p-4'>
-          <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{textSender}</p></div>
-          <div className='bg-white rounded-md p-2'>
-            <p className='font-normal'>{quizItem.message}</p>
-          </div>
-        </div>
-        <div className='flex flex-col gap-3 p-4 bg-white rounded-md'>
-          {quizAnswers.map((q) => {
-            return(
-                <>
-                  <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
-                    {/*{q.text}*/}
-                    <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
+        {endGame? <Result /> : <></>}
 
-                      {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
+        {midGame ?
+            <>
+              <div className='flex flex-col gap-3 p-4'>
+                <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{textSender}</p></div>
+                <div className='bg-white rounded-md p-2'>
+                  <p className='font-normal'>{quizItem.message}</p>
+                </div>
+              </div>
+              <div className='flex flex-col gap-3 p-4 bg-white rounded-md'>
+                {questions.map((q) => {
+                  return(
+                      <>
+                        <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
+                          {quizAnswers[(q.id) - 1].text}
+                          <div className='flex flex-row gap-2 justify-center items-center'>
+                            {q.correct ?
+                                <Image src={checkMark} className='w-7 h-7' alt='subway'></Image>
+                                :
+                                <Image src={xMark} className='w-7 h-7' alt='subway'></Image>
+                            }
+                            <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
 
-                    </button>
+                              {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
+                            </button>
+                          </div>
 
-                  </button>
-                </>
-            )
-          })}
-        </div>
+                        </button>
+                      </>
+                  )
+                })}
+                <button onClick={() => handleSubmitClick()} className='bg-brand-600 border-2 border-brand-700 p-3 flex justify-center items-center '>Next</button>
+              </div>
+            </>
+            :
+            <>
+              <div className='flex flex-col gap-3 p-4'>
+
+                <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{textSender}</p></div>
+                <div className='bg-white rounded-md p-2'>
+                  <p className='font-normal'>{quizItem.message}</p>
+                </div>
+              </div>
+              <div className='flex flex-col gap-3 p-4 bg-white rounded-md'>
+                {questions.map((q) => {
+                  return(
+                      <>
+                        <button className='flex justify-between items-center bordered border-2 border-black rounded-md p-2 font-semibold px-4'>
+                          {quizAnswers[(q.id) - 1].text}
+                          <button onClick={() => handleClick(q.id)} className='w-5 h-5 border border-3 border-black flex justify-center items-center'>
+
+                            {(multiSelect[q.id - 1]) ? <div className='w-3 h-3 rounded-full bg-black' />:<></>}
+                          </button>
+
+                        </button>
+                      </>
+                  )
+                })}
+                <button onClick={() => handleSubmitClick()} className='bg-brand-600 border-2 border-brand-700 p-3 flex justify-center items-center '>Submit</button>
+              </div>
+
+            </>
+        }
+
+
       </>
+
   )
 }
 
