@@ -75,6 +75,7 @@ const page = () => {
   return (
       <>
         {endGame? <Result /> : <></>}
+
         {midGame ?
             <>
               <div className='flex flex-col gap-3 p-4'>
@@ -112,6 +113,7 @@ const page = () => {
             :
             <>
               <div className='flex flex-col gap-3 p-4'>
+
                 <div className='font-bold  flex gap-2 bg-white rounded-md p-2'>From: <p className='font-normal'>{emailSender}</p></div>
                 <div className='font-bold flex gap-2 bg-white rounded-md p-2'>Subject: <p className='font-normal'>{emailSubject}</p></div>
                 <div className='bg-white rounded-md p-2'>
@@ -135,8 +137,10 @@ const page = () => {
                 })}
                 <button onClick={() => handleSubmitClick()} className='bg-brand-600 border-2 border-brand-700 p-3 flex justify-center items-center '>Submit</button>
               </div>
+
             </>
         }
+
 
       </>
 

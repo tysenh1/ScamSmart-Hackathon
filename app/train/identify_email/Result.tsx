@@ -3,6 +3,7 @@ import React from 'react'
 
 const Result = () => {
 
+
     const numGames = 5;
     const numRight = 12;
     const numWrong = 6;
@@ -27,6 +28,7 @@ const Result = () => {
             </div>
         </div>
     )
+
 }
 
 export default Result
