@@ -1,10 +1,17 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useStateContext } from '../StateContext';
 
 
 const SupportMessage = () => {
+
+    const { activePage, setActivePage } = useStateContext();
+
+    useEffect(() => {
+        setActivePage("counter");
+    }, [])
 
     const message = [
         "Even if you've been scammed, help is available and you are NOT alone."
