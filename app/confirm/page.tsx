@@ -22,7 +22,7 @@ export default function page() {
             });
 
             const data = await response.json();
-            setMessages([...messages, { role: "user", text: input }, { role: "bot", text: data }])
+            setMessages([...messages, { role: "user", text: input }, { role: "bot", text: data.aiResponse }])
         } catch (error) {
             console.error("Error fetching chatbot response:", error)
         }
@@ -43,12 +43,15 @@ export default function page() {
                             {messages.map((msg, index) => (
                                 <div
                                     key={index}
-                                    className={`mb-2 px-4 py-2 rounded-lg break-words max-w-[75%] ${
-                                        msg.role === "user" ? "bg-blue-500 text-white self-end ml-auto" : "bg-gray-300 text-black self-start mr-auto"
-                                    }`}
+                                    className={`flex w-full ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                                 >
-                                    <strong className={(msg.role === "user" ? "mr-20" : "ml-20")}>{msg.role === "user" ? "You" : "Bot"}:</strong>
-                                    <p className={(msg.role === "user" ? "mr-20 max-w-[300px]" : "ml-20 max-w-[300px]")}>{msg.text}</p>
+                                    <div
+                                        className={`mb-2 px-4 py-2 rounded-lg break-words inline-block max-w-[75%] ${
+                                            msg.role === "user" ? "bg-blue-500 text-white" : "bg-gray-300 text-black"
+                                        }`}
+                                    >
+                                        <strong>{msg.role === "user" ? "You" : "Bot"}:</strong> {msg.text}
+                                    </div>
                                 </div>
                             ))}
                         </div>
