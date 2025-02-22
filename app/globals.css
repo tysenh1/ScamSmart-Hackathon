@@ -5,3 +5,7 @@
 nextjs-portal {
     display: none;
 }
+
+.circle-stroke {
+    stroke-linecap: round;
+}

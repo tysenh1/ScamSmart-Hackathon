@@ -2,6 +2,9 @@ import React from 'react'
 import Image from 'next/image'
 import { getImageURL } from '../utils/image-util'
 import badge from "../../public//learnImages/learnBadge.png"
+import Link from 'next/link'
+import { cards } from './page'
+import { useState } from 'react'
 
 const Learncard = (props: any) => {
 
@@ -10,7 +13,7 @@ const Learncard = (props: any) => {
   }
 
   return (
-    <div className='w-[350px] h-28 rounded-xl overflow-clip'>
+    <Link href={`/learn/${((props.title).toLowerCase())}`} onClick={() => props.setLastLearn(cards[props.id - 1])} className='w-[350px] h-28 rounded-xl overflow-clip'>
         {props.badgeStatus 
         ?
         <div className='w-[350px] h-28 p-3 absolute flex justify-end'>
@@ -26,7 +29,7 @@ const Learncard = (props: any) => {
           <h1 className='font-bold text-white text-2xl drop-shadow-lg'>{props.title}</h1>
         </div>
         <Image className='w-[350px] h-full' key={props.id} src={props.imagePath} alt='subway logo' />
-    </div>
+    </Link>
   )
 }
 

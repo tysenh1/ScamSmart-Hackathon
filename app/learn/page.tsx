@@ -24,7 +24,7 @@ export const cards: learnCard[] = [
         title: "Phishing",
         imagePath: image1,
         badgeStatus: true,
-        progressBar: 100
+        progressBar: 74
     },
     {
         id: 2,
@@ -49,26 +49,30 @@ export const cards: learnCard[] = [
     }
 ]
 
+export function setLastLearn() {
+    setLastLearn()
+}
+
 export default function page() {
     
     const [lastLearn, setLastLearn] = useState(cards[0]);
 
     return (
         <>
-            <div className="w-screen h-full mt-8 ">
+            <div className="w-screen h-full mt-8">
                 <div className="flex flex-col gap-5 items-center ">
                     <div className="w-[350px] h-48 bg-pink-200 rounded-xl ">
                         <div className="w-[350px] h-48 absolute rounded-xl z-40">
-                            <CircleProgress percentage={50} circleWidth={200} />
+                            <CircleProgress percentage={lastLearn.progressBar} circleWidth={150} />
                         </div>
                         <Image src={lastLearn.imagePath} className="w-[350px] h-48 absolute object-cover rounded-xl" alt="asdfs" />
-                        <div className="w-[350px] h-48 bg-pink-500 rounded-xl">
-
+                        <div className="w-[350px] h-48 absolute p-3 text-white font-bold text-3xl rounded-xl drop-shadow-md outline-4 outline-gray-700">
+                            Continue Module
                         </div>
                     </div>
                     {cards.map((c) => {
                         return (
-                            <Learncard id={c.id} title={c.title} imagePath={c.imagePath} badgeStatus={c.badgeStatus} progressBar={c.progressBar} />
+                            <Learncard id={c.id} title={c.title} imagePath={c.imagePath} badgeStatus={c.badgeStatus} progressBar={c.progressBar} setLastLearn={setLastLearn} />
                         )
                     })}
                 </div>
