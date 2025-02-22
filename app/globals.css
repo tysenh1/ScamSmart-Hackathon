@@ -13,3 +13,7 @@ nextjs-portal {
 .drop-shadow-good {
     text-shadow: 0 3px 8px rgba(0, 0, 0, 0.884);
 }
+
+.box-shadow-good {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.884);
+}
