@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import {useStateContext} from "@/app/StateContext";
 
 interface WelcomeMessageCard {
   userName: string
@@ -60,6 +61,11 @@ const WeakSpotsCardDisplay = () => {
 };
 
 const page = () => {
+    const { setActivePage } = useStateContext();
+
+    useEffect(() => {
+        setActivePage("learn");
+    }, [])
   return (
     <div className="bg-white min-h-screen flex flex-col justify-center items-center space-y-6 overflow-hidden">
     <h1 className="mb-4"></h1>

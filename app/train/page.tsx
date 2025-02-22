@@ -54,7 +54,7 @@ export default function page() {
     const dailChallengeFinished = true;
 
     useEffect(() => {
-        setActivePage("learn");
+        setActivePage("train");
     }, [])
 
     return (
