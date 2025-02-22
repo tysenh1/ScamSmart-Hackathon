@@ -18,6 +18,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
+
+
   if (!readJsonFromLocalStorage("userData")) {
       const userData = {
           "recentModule": 1,

@@ -11,12 +11,18 @@
 // };
 
 export const writeJsonToLocalStorage = (key: string, data: object) => {
-    const jsonData = JSON.stringify(data);
-    localStorage.setItem(key, jsonData);
+    if (typeof window !== "undefined") {
+        const jsonData = JSON.stringify(data);
+        localStorage.setItem(key, jsonData);
+    }
+
 };
 
 export const readJsonFromLocalStorage = (key: string) => {
-    const jsonData = localStorage.getItem(key);
-    return jsonData ? JSON.parse(jsonData) : null;
+    if (typeof window !== "undefined") {
+        const jsonData = localStorage.getItem(key);
+        return jsonData ? JSON.parse(jsonData) : null;
+    }
+
 };
 
