@@ -6,10 +6,10 @@ import Nav from "./Nav";
 import {useState} from "react";
 import { StateProvider } from "@/app/StateContext";
 
-// export const metadata: Metadata = {
-//   title: "Scam Smart",
-//   description: "Made by Devs & Dragons",
-// };
+export const metadata: Metadata = {
+  title: "Scam Smart",
+  description: "Made by Devs & Dragons",
+};
 
 export default function RootLayout({
   children,
