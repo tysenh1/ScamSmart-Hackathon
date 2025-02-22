@@ -21,8 +21,11 @@ export default {
           800: '#7d9091',
           900: '#96aaab'
         },
-        greener: '#3CB043'
+        greener: '#3CB043',
       },
+    },
+    boxShadow: {
+      'custom': '0 4px 4px rgba(0, 0, 0, 0.1)',
     },
   },
   plugins: [

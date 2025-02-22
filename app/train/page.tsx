@@ -51,7 +51,7 @@ export default function page() {
     const { activePage, setActivePage } = useStateContext();
 
     useEffect(() => {
-        setActivePage("learn");
+        setActivePage("train");
     }, [])
 
     return (
