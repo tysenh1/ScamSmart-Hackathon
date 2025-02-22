@@ -19,7 +19,7 @@ const Nav = () => {
                 <button className={(activePage == 'train') ? 'bg-slate-400 w-full h-full' : 'bg-slate-300 w-full h-full'}><Image src={(activePage == 'train') ? "/navPictures/train_active.png" : "/navPictures/train.png"} className={"m-auto"} width={40} height={40} alt={""}></Image></button>
             </Link>
 
-            <Link href="/dashboard" onClick={() => setActivePage("dashboard")}>
+            <Link href="/" onClick={() => setActivePage("dashboard")}>
                 <button className={(activePage == 'dashboard') ? 'bg-slate-400 w-full h-full' : 'bg-slate-300 w-full h-full'}><Image src={(activePage == 'dashboard') ? "/navPictures/dashboard_active.png" : "/navPictures/dashboard.png"} className={"m-auto"} width={40} height={40} alt={""}></Image></button>
             </Link>
 
